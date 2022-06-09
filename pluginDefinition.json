@@ -1,0 +1,46 @@
+{
+  "identifier": "org.zowe.zlux.sample.iframe",
+  "apiVersion": "2.0.0",
+  "pluginVersion": "1.2.0",
+  "license": "EPL-2.0",
+  "author": "Zowe",
+  "homepage": "https://github.com/zowe/sample-iframe-app",
+  "pluginType": "application",
+  "webContent": {
+    "framework": "iframe",
+    "standaloneUseFramework": true,
+    "launchDefinition": {
+      "pluginShortNameKey": "sampleiframe",
+      "pluginShortNameDefault": "IFrame Sample",
+      "imageSrc": "assets/icon.png"
+    },
+    "descriptionKey": "Sample App Showcasing IFrame Adapter",
+    "descriptionDefault": "Sample App Showcasing IFrame Adapter",
+    "startingPage": "html/index.html",
+    "defaultWindowStyle": {
+      "width": 800,
+      "height": 650
+    }
+  },
+  "dataServices": [
+    {
+      "type": "import",
+      "sourcePlugin": "org.zowe.zlux.sample.angular",
+      "sourceName": "hello",
+      "localName": "hello",
+      "versionRange": "^1.0.0"
+    }
+  ],
+  "configurationData": {
+    "resources": {
+      "requests": {
+        "aggregationPolicy": "override",
+        "subResources": {
+          "app": {
+            "aggregationPolicy": "override"
+          }
+        }
+      }
+    }
+  }  
+}
