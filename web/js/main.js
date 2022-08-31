@@ -20,7 +20,7 @@
 //   ZoweZLUX = mvdWindow.ZoweZLUX;
 // }
 
-const MY_PLUGIN_ID = 'org.zowe.zlux.sample.iframe';
+const MY_PLUGIN_ID = 'org.zowe.zlux.myfirstapp';
 
 function SettingsService() {
   this.plugin = null;

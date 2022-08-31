@@ -15,7 +15,7 @@
 In this case however, we are loading a simple JS file, ../js/main.js which has some awareness of Desktop globals for interaction -->
 <html>
   <head>
-    <title>Iframe Sample App</title>
+    <title>My First App</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/iframe.css">
@@ -32,7 +32,7 @@ In this case however, we are loading a simple JS file, ../js/main.js which has s
     <!-- UNIT TEST -->
     <script>
       let notifications = [];
-      let windowTitle = "Iframe Sample";
+      let windowTitle = "My First App";
       let SAMPLE_IFRAME_EXAMPLE_CONTEXT = {
         exampleProp: "test"
       };
@@ -204,7 +204,7 @@ In this case however, we are loading a simple JS file, ../js/main.js which has s
           "defaultName":"Example 2",
           "type":"Launch",
           "targetMode":"PluginCreate",
-          "targetId":"org.zowe.zlux.sample.iframe",
+          "targetId":"org.zowe.zlux.myfirstapp",
           "arg": {},
           "primaryArgument": {}
         }
@@ -218,12 +218,12 @@ In this case however, we are loading a simple JS file, ../js/main.js which has s
       }
 
       async function testWindowTitle(){
-        if (windowTitle == 'Iframe Sample') {
-          await windowActions.setTitle('Iframe Sample (title changed)');
-          windowTitle = 'Iframe Sample (title changed)';
+        if (windowTitle == 'My First App') {
+          await windowActions.setTitle('My First App (title changed)');
+          windowTitle = 'My First App (title changed)';
         } else {
-          await windowActions.setTitle('Iframe Sample');
-          windowTitle = 'Iframe Sample';
+          await windowActions.setTitle('My First App');
+          windowTitle = 'My First App';
         }
       }
 

@@ -1,7 +1,7 @@
 {
-  "identifier": "org.zowe.zlux.sample.iframe",
+  "identifier": "org.zowe.zlux.myfirstapp",
   "apiVersion": "2.0.0",
-  "pluginVersion": "1.2.0",
+  "pluginVersion": "0.1.2",
   "license": "EPL-2.0",
   "author": "Zowe",
   "homepage": "https://github.com/zowe/sample-iframe-app",
@@ -10,12 +10,12 @@
     "framework": "iframe",
     "standaloneUseFramework": true,
     "launchDefinition": {
-      "pluginShortNameKey": "sampleiframe",
-      "pluginShortNameDefault": "IFrame Sample",
+      "pluginShortNameKey": "myfirstapp",
+      "pluginShortNameDefault": "My First App",
       "imageSrc": "assets/icon.png"
     },
-    "descriptionKey": "Sample App Showcasing IFrame Adapter",
-    "descriptionDefault": "Sample App Showcasing IFrame Adapter",
+    "descriptionKey": "Key: My first App Showcasing IFrame Adapter",
+    "descriptionDefault": "Description: My first App Showcasing IFrame Adapter",
     "startingPage": "html/index.html",
     "defaultWindowStyle": {
       "width": 800,

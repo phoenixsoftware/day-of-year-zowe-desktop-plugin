@@ -1,10 +1,10 @@
 ---
-name: iframe-sample
-id: org.zowe.zlux.sample.iframe
+name: myfirstapp
+id: org.zowe.zlux.myfirstapp
 # Without the v
 version: 1.2.0
 # Human readable component name
-title: IFrame Sample
+title: My First App
 # Human readable component description
 description: 'Sample App Showcasing IFrame Adapter'
 homepage: https://zowe.org
@@ -17,7 +17,7 @@ keywords:
 license: EPL-2.0
 repository:
   type: git
-  url: https://github.com/zowe/sample-iframe-app.git
+  url: https://github.com/zowe/myfirstapp.git
 # we do not specify encoding here because its already tagged ascii
 build:
   branch: "{{build.branch}}"
