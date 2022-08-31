@@ -6,7 +6,7 @@
   SPDX-License-Identifier: EPL-2.0
   Copyright Contributors to the Zowe Project.
 -->
-<Project default_configuration_name="Configuration 1" fallback_default_config_name="Configuration 1" file_encoding="ISO-8859-1" ltd_name="javascript" name="sample-iframe-app" version="9.0.3.11">
+<Project default_configuration_name="Configuration 1" fallback_default_config_name="Configuration 1" file_encoding="ISO-8859-1" ltd_name="javascript" name="mayfirstapp" version="9.0.3.11">
 	<Configuration name="Configuration 1"/>
 	<Source exclude="false" path="." web="false"/>
 	<ProjectScanSettings/>
