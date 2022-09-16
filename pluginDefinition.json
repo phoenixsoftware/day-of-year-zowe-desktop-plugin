@@ -14,8 +14,8 @@
       "pluginShortNameDefault": "My First App",
       "imageSrc": "assets/icon.png"
     },
-    "descriptionKey": "Key: My first App Showcasing IFrame Adapter",
-    "descriptionDefault": "Description: My first App Showcasing IFrame Adapter",
+    "descriptionKey": "myfirstappunderzowe",
+    "descriptionDefault": "Description: My first App Running Under Zowe",
     "startingPage": "html/index.html",
     "defaultWindowStyle": {
       "width": 800,
