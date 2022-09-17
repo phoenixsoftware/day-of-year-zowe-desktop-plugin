@@ -29,6 +29,15 @@ In this case however, we are loading a simple JS file, ../js/main.js which has s
     <script type="text/javascript" src="../../../../../lib/org.zowe.zlux.logger/0.9.0/logger.js"></script>
     <script type="text/javascript" src="../../../org.zowe.zlux.bootstrap/web/iframe-adapter.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
+    <!-- Demystified Presentation: Added metadata for DOY web app. -->
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../css/jquery-ui-1.10.4.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/appv31.css" type="text/css">
+    <link rel="stylesheet" href="../css/doy.css" type="text/css">
+    <script charset="utf-8" src="../js/jquery-1.11.0.min.js"></script>
+    <script charset="utf-8" src="../js/doy.js"></script>
+    <!-- End of added elements -->
+    
     <!-- UNIT TEST -->
     <script>
       let notifications = [];
@@ -260,183 +269,35 @@ In this case however, we are loading a simple JS file, ../js/main.js which has s
         testDispatcher();
       }
 
-      function iframeLoaded() {
-        // Register accordion logic
-        var acc = document.getElementsByClassName("iframe-accordion");
-        var i;
-
-        for (i = 0; i < acc.length; i++) {
-          if (i > 0) { // Hide all accordion sections by default except the first
-            acc[i].nextElementSibling.style.maxHeight = "0px";
-            acc[i].classList.toggle("active");
-          }
-          acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight != "0px") {
-              panel.style.maxHeight = "0px";
-            } else {
-              panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-          });
-        }
-
-        ZoweZLUX.iframe.isSingleAppMode().then(function(value) {
-          if (value) { //If we are in single app mode...
-            var elem = document.getElementsByClassName("iframe-single-app-mode");
-            for (i = 0; i < elem.length; i++) {
-              elem[i].style.display = "unset";
-            }
-          } else { //If we are in regular desktop mode...
-            var elem = document.getElementsByClassName("iframe-desktop-mode");
-            for (i = 0; i < elem.length; i++) {
-              elem[i].style.display = "unset";
-            }
-          }
-        });
+      function iframeLoaded() {  // All logic that runs after the iframe is loaded goes here
       };
 
   </script>
   </head>
-  <body class="iframe-font test-panel-container" onload="iframeLoaded(this)">
-    <div class="test-panel plugin-test-panel">    
-      <div class="bottom-10">
-          <button class="iframe-accordion bold-text">Iframe Plugin requests:</button>
-          <div class="panel">
-              <!-- Tests the sending of requests to other plugins. Defaults to send a message
-                   to itself (and responding) to show more parts of the API-->
-                <span class="bold-text">Test: </span>
-              <br></br>
-              <button class="iframe-button" type="button" onclick="test(event);">Run</button>
-
-              <br></br>
-                <span class="bold-text">Server Interaction: </span>
-              <br></br>
-              <button class="iframe-button" type="button" onclick="testLogger()">Log</button>
-              <button class="iframe-button" type="button" onclick="getDefaultsFromServer()">Get metadata from Server</button>
-              <button class="iframe-button" type="button" onclick="saveToServer()">Save metadata to Server</button>
-
-              <div class="iframe-desktop-mode" style="display: none;">
-                <br></br>
-                  <span class="bold-text">Window Events: </span>
-                <br></br>
-                <button class="iframe-button" type="button" onclick="testWindowTitle();">Change Title</button>
-                <button class="iframe-button" type="button" onclick="windowActions.minimize();">Minimize</button>
-                <button class="iframe-button" type="button" onclick="windowActions.maximize();">Maximize</button>
-                <button class="iframe-button" type="button" onclick="windowActions.restore();">Restore</button>
-                <button class="iframe-button" type="button" onclick="testSlowClose();">Slow Close (3s Handler)</button>
-                <button class="iframe-button" type="button" onclick="testClose();">Close</button>
-              
-                <br></br>
-                  <span class="bold-text">Desktop Components: </span>
-                <br></br>
-                <button class="iframe-button" type="button" onclick="testNotification()">Send a notification</button>
-                <button class="iframe-button" type="button" onclick="testContextMenu(event)">Spawn a context menu</button>
-              </div>
-              <div class="iframe-single-app-mode" style="display: none">
-                <br></br>
-                  <span class="bold-text">Window Events unavailable (viewing in standalone mode) </span>
-                <br></br>
-                  <span class="bold-text">Desktop Components unavailable (viewing in standalone mode) </span>
-                <br></br>
-              </div>
-
-              </div>
-          
-          <div class="iframe-single-app-mode" style="display: none">
-            <button class="iframe-accordion bold-text">App to App interaction unavailable (viewing in standalone mode)</button>
-            
-            <br></br>
-            <br></br>
-
-            <button class="iframe-accordion bold-text">Dataservice Request test: (not implemented yet in standalone mode)</button>
-              <div class="panel dataservice-test-panel">
-                      <div></div> <!-- Dummy div element for QA-->
-                      <div>
-                        <input class="iframe-input input-height input-corner" placeholder="Enter message here." 
-                          name="helloTextStandalone" id="helloTextStandalone" oninput="inputChanged()" style="width: 50%;"/>
-                        <button class="iframe-button" id="runButton" onclick="sayHello()" disabled
-                          style="color: grey; border-color: grey;">Run</button>
-                      </div>
-                      <div>
-                        <textarea readonly class="server-response" placeholder="Response will be shown here." name="serverResponseMessageStandalone" id="serverResponseMessageStandalone"></textarea>
-                      </div>
-              </div>
-          </div>
-
-          <div class="iframe-desktop-mode" style="display: none">
-            <button class="iframe-accordion bold-text">App to App interaction:</button>
-            <div class="panel">
-                <span class="bold-text">Application Identifier: </span>
-                <div>
-                  <div class="div-input">
-                    <input class="iframe-input input-height input-corner" type="text" name="appId" id="appId" placeholder="Enter app identifier." value="org.zowe.terminal.tn3270"/>
-                  </div>
-                  <div>
-                    <!-- Action types are used to determine what sort of Action is being taken on whatever App instance is the target. Launch simply creates a new instance with the context you provide, but Message can be used to communicate with an already open Instance to drive some action -->
-                    <label class="bold-text">Action Type: </label>
-                    <input type="radio" id="actionLaunch"
-                          name="actionType" value="Launch" checked>
-                    <label for="actionLaunch">Launch</label>
-          
-                    <input type="radio" id="actionMessage"
-                          name="actionType" value="Message">
-                    <label for="actionMessage">Message</label>
-                  </div>
-                  <!-- App target modes are used to determine which instance of an App should be communicated with. You can create a new instance to send the Action to, or you could reuse an existing instance that is open. -->
-                  <div style="padding-bottom: 20px;">
-                    <label class="bold-text">App Target Mode: </label>
-                    <input type="radio" id="targetCreate"
-                          name="targetMode" value="PluginCreate" checked>
-                    <label for="targetCreate">Create New</label>
-          
-                    <input type="radio" id="targetReuse"
-                          name="targetMode" value="PluginFindAnyOrCreate">
-                    <label for="targetReuse">Reuse Any Open</label>
-                  </div>
-                  <span class="div-input bold-text">Parameters:</span>
-                  <div class="div-textarea-input">
-                    <!-- The text here is merely an example which provides some connection details for the terminal app. It could be anything so long as the receiving App supports it.
-                        In this example App, the contents here will be put inside of a JSON with the contents as the "data" attribute. -->
-                    <textarea class="iframe-input input-corner" rows="11" cols="50" name="parameters" id="parameters">
-                    {"type":"connect",
-                    "connectionSettings":{
-                      "host":"localhost",
-                      "port":23,
-                      "deviceType":5,
-                      "alternateHeight":60,
-                      "alternateWidth":132,
-                      "oiaEnabled": true,
-                      "security": {
-                        "type":0
-                      }
-                    }}</textarea>
-                  </div>
-                  <button class="iframe-button" type="button" onclick="sendAppRequest()">Send App request</button>
-                  <br></br>
-                  <div style="width: 100%">
-                    <span class="bold-text">App Status or Message:</span>
-                    <p class="display-text   disable-effect" id="status">Status will appear here.</p>
-                  </div>
-                  </div>
-              </div>
-              <button class="iframe-accordion bold-text">Dataservice Request test:</button>
-              <div class="panel dataservice-test-panel">
-                <div></div> <!-- Dummy div element for QA-->
-                <div>
-                  <input class="iframe-input input-height input-corner" placeholder="Enter message here." 
-                    name="helloText" id="helloText" oninput="inputChanged()" style="width: 50%;"/>
-                  <button class="iframe-button" id="runButton" onclick="sayHello()"
-                    style="color: grey; border-color: grey;">Run</button>
-                </div>
-                <div>
-                  <textarea readonly class="server-response" placeholder="Response will be shown here." name="serverResponseMessage" id="serverResponseMessage"></textarea>
-                </div>
-              </div>
-          </div>
-      </div>
-    </div>  
-  </body>
+    <!-- Demystified presentation: Added DOY HTML for Web App 
+                                   Note that much of the Zowe iframe code above isn't needed, but it
+                                   it is there incase you would leverage with your app.
+    -->
+    <body style="overflow:hidden;" id="doy">
+      <div id="webapp"></div>
+      <header class="hero" >
+          <h1 >Day of Year Calculator</h1>
+      </header>
+      <main id="content" class="grid-container" style="margin-left:50px;">
+        <form>
+          <label>Date:</label>
+            <input type="date" autofocus>
+          <label>Day of Year:</label>
+            <input type="number">
+        </form>
+      </main><!-- div id="content" -->    
+      <footer id="doyfooter" >
+        <div id="doycopyright" class="cell large-5 copyright">
+            &copy; 1997&ndash;2022 Phoenix Software International, Inc. All rights reserved.<br>Used with permission.
+        </div>
+      </footer>
+    <!-- End of added DOY content. -->
+    </body>
 </html>
 
 
