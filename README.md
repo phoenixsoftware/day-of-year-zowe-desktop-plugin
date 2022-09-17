@@ -21,18 +21,27 @@ This app can likely be installed directly under v1.27 LTS of Zowe, but hasn't be
 # Instructions
 1. Clone the project into the same filesystem accessed by Zowe, or copy the cloned files and directory tree into that filesystem.
 
-2. This Day of Year plug-in is configured with *my-first-app* as the unique application ID and title.  You can change these values if you desire, as described in the presentation.
+2. Because Zowe is not EBCDIC and the mainframe Linux for Z makes codepage assumptions, you tag all your files iso8859-1, except for the icon.png file that needs to be tagged binary.  Issue these commands in the root of the project on the Linux for Z filesystem:
 
-3. Change directory to *runtimeDirectory*/bin, the directory that has the zwe command file.
+    `chtag -R -t -c iso8859-1 *`
 
-4. If you do not know where the *runtimeDirectory* is, find the ZWESLSTC job and look for the CONFIG= parameter.  This tells you where the zowe.yaml file is located in the zowe-accessible filesystem.  The contents of the yaml file include the definition for *runtimeDirectory*.  In the next instruction, you will need this path to install your zowe plug-in.
-5. Install your plug-in by issuing: 
+    `chtag -b web/assets/*.png`
+
+    `ls -R -laT`
+
+3. This Day of Year plug-in is configured with *my-first-app* as the unique application ID and title.  You can change these values if you desire, as described in the presentation.
+
+4. Change directory to *runtimeDirectory*/bin, the directory that has the zwe command file.
+
+5. If you do not know where the *runtimeDirectory* is, find the ZWESLSTC job and look for the CONFIG= parameter.  This tells you where the zowe.yaml file is located in the zowe-accessible filesystem.  The contents of the yaml file include the definition for *runtimeDirectory*.  In the next instruction, you will need this path to install your zowe plug-in.
+
+6. Install your plug-in by issuing: 
 
      `zwe components install -c` *path-to-zowe.yaml* `-o` *path-to-plugin-root*
 
     Ensure you have the proper authority to issue this command, or it will fail.
 
-6. Cycle the ZWESLSTC job.  When it comes up again, my-first-app will display in the Zowe desktop start menu.  After this restart, you can change all the web app files, save them, then use the refresh button on the Zowe desktop to force reloading of the changes.  You can debug your webapp using the browser debugger.  You web app will be found in one of the webpack folders, so look until you find it.  Only if you need to change the manifest.yaml or pluginDefinition.json file, you will need to cycle the ZWESLSTC job.
+7. Cycle the ZWESLSTC job.  When it comes up again, my-first-app will display in the Zowe desktop start menu.  After this restart, you can change all the web app files, save them, then use the refresh button on the Zowe desktop to force reloading of the changes.  You can debug your webapp using the browser debugger.  You web app will be found in one of the webpack folders, so look until you find it.  Only if you need to change the manifest.yaml or pluginDefinition.json file, you will need to cycle the ZWESLSTC job.
 
 # Legal
 This program and the accompanying materials are
