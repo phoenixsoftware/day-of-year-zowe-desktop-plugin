@@ -16,10 +16,10 @@ This app can likely be installed directly under v1.27 LTS of Zowe, but hasn't be
  
  Alternatively, you can remove the dataServices property from the pluginDefinition.json file.  The JavaScript referencing this functionality, though included, is not excersized.
 
-**Note: This App intentionally does not follow the typical dev layout of directories and content described in [the Zowe wiki](https://github.com/zowe/zlux/wiki/ZLUX-App-filesystem-structure) in order to demonstrate that you can include content within the ZLUX framework that was not intended for ZLUX originally.**
+**Note from the Zowe Team: This App intentionally does not follow the typical dev layout of directories and content described in [the Zowe wiki](https://github.com/zowe/zlux/wiki/ZLUX-App-filesystem-structure) in order to demonstrate that you can include content within the ZLUX framework that was not intended for ZLUX originally.**
 
 # Instructions
-1. Clone the project into the same filesystem accessed by Zowe, or copy the cloned files and directory tree into that filesystem.
+1. Clone the project into the same filesystem accessed by Zowe, or copy the cloned files and directory tree into that filesystem.  You do not need the .git directory of .git files, .ppf, sonar files, dco signoffs, or .md files if you wish to save space.  None effect your installation of the plug-in.
 
 2. Because Zowe is not EBCDIC and the mainframe Linux for Z makes codepage assumptions, you tag all your files iso8859-1, except for the icon.png file that needs to be tagged binary.  Issue these commands in the root of the project on the Linux for Z filesystem:
 
