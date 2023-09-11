@@ -2,27 +2,23 @@
 name: myfirstapp
 id: org.zowe.zlux.myfirstapp
 # Without the v
-version: 1.2.0
+version: 2.10.10905
 # Human readable component name
 title: My First App
 # Human readable component description
-description: 'Sample App Showcasing IFrame Adapter'
+description: 'Day of Year Sample App Showcasing IFrame Adapter'
 homepage: https://zowe.org
 keywords:
   - zlux
   - appfw
   - app
   - iframe
-  - sample
+  - myFirstApp
 license: EPL-2.0
 repository:
   type: git
-  url: https://github.com/zowe/myfirstapp.git
+  url: https://github.com/phoenixsoftware/day-of-year-zowe-desktop-plugin
 # we do not specify encoding here because its already tagged ascii
-build:
-  branch: "{{build.branch}}"
-  number: "{{build.number}}"
-  commitHash: "{{build.commitHash}}"
-  timestamp: "{{build.timestamp}}"
 appfwPlugins:
   - path: .
+schemas.configs: schemas/trivial-schema.json 

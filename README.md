@@ -5,8 +5,11 @@ this distribution, and is available at https://www.eclipse.org/legal/epl-v20.htm
 SPDX-License-Identifier: EPL-2.0
 
 Copyright Contributors to the Zowe Project.
+# Day of Year Zowe Plug-in (UPDATED 9/10/23)
+This sample app was update for the 2023 Open Mainframe Summit in Las Vegas for the presentation titled Demystified: Put Your Web App on the Zowe Desktop in a Flash UPDATED. (It is included in this repository.) The orginal presentation (below) was modified into an "everything you need to know to modify a web app and install it as a Zowe iframe app" presentation.  As far as the repo is concerned, I removed a few extraneous files, updated the metadata files to 2.10 level so they match the presentation, and added the schemas directory which, starting in LTS 2.3, was required to be able to install.  Now that you have the repository cloned, you can use the **zwe components install** command to install it with no modification.
+
 # Day of Year Zowe Plug-in
-This sample app was created for the 2022 Open Mainframe Summit for the presentation titled Demystified: Put Your Web App on the Zowe Desktop in a Flash.  It was created following the instructions in the presentation to modify the v2.0 Zowe Iframe Sample App, merging in the [@phoenixsoftware/day-of-year-web-app GitHub project](https://github.com/phoenixsoftware/day-of-year-web-app).
+This sample app was created for the 2022 Open Mainframe Summit in Philidelphia for the presentation titled Demystified: Put Your Web App on the Zowe Desktop in a Flash.  It was created following the instructions in the presentation to modify the v2.0 Zowe Iframe Sample App, merging in the [@phoenixsoftware/day-of-year-web-app GitHub project](https://github.com/phoenixsoftware/day-of-year-web-app).
 
 This app can likely be installed directly under v1.27 LTS of Zowe, but hasn't been tested.  The install procedure uses a shell script that can be found in the bin directory that is a subdirectory of the instance directory.  The instance directory can be found on the INSTANCE= parameter in the ZWESVSTC job.  The syntax is: 
 

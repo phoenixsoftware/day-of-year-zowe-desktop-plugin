@@ -1,22 +1,25 @@
 {
   "identifier": "org.zowe.zlux.myfirstapp",
   "apiVersion": "2.0.0",
-  "pluginVersion": "0.1.2",
+  "pluginVersion": "2.10.10905",
   "license": "EPL-2.0",
-  "author": "Zowe",
-  "homepage": "https://github.com/zowe/sample-iframe-app",
   "pluginType": "application",
   "webContent": {
     "framework": "iframe",
     "standaloneUseFramework": true,
     "launchDefinition": {
       "pluginShortNameKey": "myfirstapp",
-      "pluginShortNameDefault": "My First App",
+      "pluginShortNameDefault": "DOY: My First App",
       "imageSrc": "assets/icon.png"
     },
+    "doyData": {
+      "url": "https://zowe.org",
+      "comment": "Data accessible to app demonstrated in (E)JES sample."
+    },
     "descriptionKey": "myfirstappunderzowe",
-    "descriptionDefault": "Description: My first App Running Under Zowe",
+    "descriptionDefault": "Day of Year: My first App Running Under Zowe",
     "startingPage": "html/index.html",
+    "isSingleWindowApp": true,
     "defaultWindowStyle": {
       "width": 800,
       "height": 650
